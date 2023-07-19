@@ -4,7 +4,7 @@
 
 ## Course: ALX SOFTWARE ENGINEERING
 
-# Objectives:It aims to learn about header files, functions, loops and nested loops in **C language**.
+## Objectives:It aims to learn about header files, functions, loops and nested loops in **C language**.
 		
 
 		
