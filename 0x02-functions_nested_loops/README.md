@@ -1,7 +1,10 @@
-#Project Name:0x02. C - Functions, nested loops
-#Project By: Jordan Crossley
-#Course: ALX SOFTWARE ENGINEERING
-#Objectives:It aims to learn about header files, functions, loops and nested loops in **C language**.
+## Project Name:0x02. C - Functions, nested loops
+
+## Project By: Jordan Crossley
+
+## Course: ALX SOFTWARE ENGINEERING
+
+## Objectives:It aims to learn about header files, functions, loops and nested loops in **C language**.
 		
 
 		
