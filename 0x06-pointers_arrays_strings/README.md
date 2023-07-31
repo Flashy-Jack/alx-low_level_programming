@@ -4,9 +4,9 @@
 
 ## Course: ALX SOFTWARE ENGINEERING
 
-![image](https://user-images.githubusercontent.com/105258746/190977571-d5135d31-02a5-4ff3-88de-d9062d6cfe13.png)
+![image](https://media.geeksforgeeks.org/wp-content/uploads/20230302091959/Arrays-in-C.png)
 
-### A pointer is a variable that stores the memory address of another variable as its value. A pointer variable points to a data type (like int) of the same type, and is `created with the * operator`.
+### Array in C can be defined as a method of clubbing multiple entities of similar type into a larger group. These entities or elements can be of int, float, char, or double data type or can be of user-defined data types too like structures
 
 - File: `_putchar.c` is a function that replaces the standard library function putchar().
 
