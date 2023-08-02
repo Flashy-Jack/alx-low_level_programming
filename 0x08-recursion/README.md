@@ -8,9 +8,9 @@
 
 ### Recursion is a programming concept where a function calls itself to solve a problem by breaking it down into smaller, simpler versions of the same problem. It involves defining a base case to stop the recursive calls and a recursive step that reduces the problem size until the base case is reached.
 
-### File: `_putchar.c` is a ### File: containing the _putchar function.
+### File: `_putchar.c` is a file containing the _putchar function.
 
-### File: `main.h` is the header ### File: containing the function prototypes.
+### File: `main.h` is the header file containing the function prototypes.
 
 ### File: `0-puts_recursion.c` is a function that prints a string, followed by a new line.
 
