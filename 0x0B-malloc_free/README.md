@@ -1,8 +1,8 @@
 # PROJECT: 0x0B. C - malloc, free
 
-## Project By: Jordan Crossley 
+## Project By: Jordan Crossley
 
-## Course: ALX SOFTWARE ENGINEERING
+## Course: ALX SOFTWARE ENGINEERING 
 
 ![image](https://techalmirah.com/wp-content/uploads/2021/09/dynamic-memory-allocation-in-c-1024x415.png)
 
@@ -23,8 +23,9 @@ Read or watch:
 `malloc`
 
 `free`
+ 
 
-## Tasks 
+## Tasks
 
 ### 0. Float like a butterfly, sting like a bee
 
@@ -33,20 +34,27 @@ Write a function `create_array` that creates an array of chars initialized with 
 **Summary:**
 
 - Allocates memory for array of given size
-- Initializes array with specified char
+- Initializes array with specified char  
+- Null terminates array
 - Returns NULL if size is 0
 
-**Pseudo Code:**
+**Corrected Pseudo Code:**
 
 ```c
-char* create_array(unsigned int size, char c) {
-  // Allocate memory 
-  char* array = malloc(size * sizeof(char)); 
+char *create_array(unsigned int size, char c) {
   
-  // Initialize array
-  for(int i = 0; i < size; i++) {
+  // Allocate memory
+  char *array = malloc(size * sizeof(char));
+  if (array == NULL)
+    return NULL;
+    
+  // Initialize array  
+  for (unsigned int i = 0; i < size; i++) {
     array[i] = c;
   }
+  
+  // Null terminate
+  array[size] = '\0';
 
   return array;
 }
@@ -58,20 +66,31 @@ Write a function `_strdup` that returns a pointer to a newly allocated space in 
 
 **Summary:**
 
-- Allocates memory for duplicate of string
+- Allocates memory for duplicate of string  
 - Copies string to new memory space
 - Returns NULL if string is NULL
 
-**Pseudo Code:**
+**Corrected Pseudo Code:**
 
-```c  
-char*_strdup(char* str) {
-
+```c
+char *_strdup(char *str) {
+  
+  // Check string is not NULL
+  if (str == NULL)
+    return NULL;
+    
   // Allocate memory
-  char* dup = malloc(strlen(str) + 1);
-
-  // Copy string 
-  strcpy(dup, str);
+  unsigned int len = 0;
+  while (str[len])
+    len++;
+  char *dup = malloc(len + 1);
+  
+  // Copy string
+  unsigned int i;
+  for (i = 0; str[i]; i++) {
+    dup[i] = str[i];
+  }
+  dup[i] = '\0';
 
   return dup;
 }
@@ -83,34 +102,47 @@ Write a function `str_concat` that concatenates two strings.
 
 **Summary:**
 
-- Allocates memory for concatenated string 
-- Copies strings into new space
+- Allocates memory for concatenated string
+- Copies strings into new space  
 - Adds null terminator
 - Handles NULL strings
 
-**Pseudo Code:**
+**Corrected Pseudo Code:**
 
 ```c
-char* str_concat(char* s1, char* s2) {
+char *str_concat(char *s1, char *s2) {
 
-  // Handle NULLs
-  if (s1 == NULL) {
+  unsigned int len1 = 0, len2 = 0;
+  char *concat;
+
+  // Check strings are not NULL
+  if (s1 == NULL) 
     s1 = "";
-  }
-  if (s2 == NULL) {
+  if (s2 == NULL)
     s2 = "";
-  }
+
+  // Get lengths
+  while (s1[len1])
+    len1++;
+  while (s2[len2])
+    len2++;
   
   // Allocate memory
-  int len = strlen(s1) + strlen(s2);
-  char* concat = malloc(len + 1);
+  concat = malloc(len1 + len2 + 1);
+  if (concat == NULL)
+    return NULL;
 
-  // Concatenate strings
-  strcpy(concat, s1);
-  strcat(concat, s2);
+  // Copy s1
+  unsigned int i;
+  for (i = 0; i < len1; i++)
+    concat[i] = s1[i];
 
-  // Add null terminator
-  concat[len] = '\0';
+  // Copy s2
+  for (i = 0; i < len2; i++)
+    concat[len1 + i] = s2[i];
+
+  // Null terminate
+  concat[len1 + len2] = '\0';
 
   return concat;
 }
@@ -120,30 +152,39 @@ char* str_concat(char* s1, char* s2) {
 
 Write a function `alloc_grid` that returns a pointer to a 2D array of integers.
 
-**Summary:** 
+**Summary:**
 
 - Dynamically allocates memory for 2D array
-- Sets each element to 0  
-- Handles invalid inputs
+- Sets each element to 0
+- Handles invalid inputs 
 
-**Pseudo Code:**
+**Corrected Pseudo Code:** 
 
-```c
-int** alloc_grid(int width, int height) {
+```c  
+int **alloc_grid(int width, int height) {
 
-  // Handle invalid inputs
-  if (width <= 0 || height <= 0) {
+  int **grid;
+  int i;
+
+  if (width <= 0 || height <= 0)
     return NULL;
-  }
 
-  // Allocate memory 
-  int** grid = malloc(height * sizeof(int*));
-  for (int i = 0; i < height; i++) {
-    grid[i] = malloc(width * sizeof(int)); 
+  // Allocate grid
+  grid = malloc(sizeof(int *) * height);
+  if (grid == NULL)
+    return NULL;
+
+  // Allocate rows 
+  for (i = 0; i < height; i++) {
+    grid[i] = malloc(sizeof(int) * width);
+    if (grid[i] == NULL) {
+      free_grid(grid, i);
+      return NULL;
+    }
   }
 
   // Initialize to 0
-  for (int i = 0; i < height; i++) {
+  for (i = 0; i < height; i++) {
     for (int j = 0; j < width; j++) {
       grid[i][j] = 0;
     }
@@ -153,111 +194,134 @@ int** alloc_grid(int width, int height) {
 }
 ```
 
-
 ### 4. It's not bragging if you can back it up
 
 Write a function `free_grid` to free a 2D grid previously created by `alloc_grid`.
 
-**Summary:**
+**Summary:** 
 
-- Frees memory allocated for each row 
+- Frees memory allocated for each row
 - Frees main grid pointer
+- Handles NULL grid
 
-**Pseudo Code:**
+**Corrected Pseudo Code:**
 
 ```c
-void free_grid(int** grid, int height) {
+void free_grid(int **grid, int height) {
 
-  // Free each row
-  for (int i = 0; i < height; i++) {
+  if (grid == NULL || height <= 0)
+    return;
+
+  for (int i = 0; i < height; i++) 
     free(grid[i]);
-  }
 
-  // Free grid pointer
   free(grid);
 }
 ```
 
-### 5. It isn't the mountains ahead to climb that wear you out; it's the pebble in your shoe 
+### 5. It isn't the mountains ahead to climb that wear you out; it's the pebble in your shoe
 
 Write a function `argstostr` that concatenates all arguments of a program into a string.
 
 **Summary:**
 
-- Concatenates program arguments with newlines 
-- Handles NULL arguments
+- Concatenates program arguments with newlines
+- Handles NULL arguments 
 - Allocates memory for concatenated string
 
-**Pseudo Code:**
+**Corrected Pseudo Code:**
 
 ```c
-char* argstostr(int ac, char** av) {
+char *argstostr(int ac, char **av) {
 
-  // Handle NULL args
-  if (ac == 0 || av == NULL) {
+  char *str;
+  int i, j, idx, size = 0;
+
+  if (ac == 0 || av == NULL)
     return NULL;
-  }
 
-  // Calculate total length
-  int len = 0;
-  for (int i = 0; i < ac; i++) {
-    len += strlen(av[i]) + 1; // +1 for newline
+  // Calculate total size
+  for (i = 0; i < ac; i++) {
+    for (j = 0; av[i][j]; j++)
+      size++;
+    size++; // newline
   }
 
   // Allocate memory
-  char* str = malloc(len + 1); // +1 for null term
+  str = malloc(size + 1);
+  if (str == NULL)
+    return NULL;
 
-  // Concatenate arguments
-  int idx = 0;
-  for (int i = 0; i < ac; i++) {
-    strcpy(str + idx, av[i]); 
-    idx += strlen(av[i]);
-    str[idx++] = '\n';
+  // Concatenate arguments and newlines
+  idx = 0;
+  for (i = 0; i < ac; i++) {
+    for (j = 0; av[i][j]; j++) {
+      str[idx] = av[i][j];
+      idx++;
+    }
+    str[idx] = '\n';
+    idx++;
   }
+  str[idx] = '\0';
 
   return str;
 }
 ```
 
-### 6. I will show you how great I am
+### 6. I will show you how great I am 
 
 Write a function `strtow` that splits a string into words.
 
 **Summary:**
 
-- Splits string into array of words  
-- Allocates memory for array and each word
+- Splits string into array of words
+- Allocates memory for array and each word  
+- Adds null terminator to each word
 - Handles empty string
-- Adds null terminator after each word
 
-**Pseudo Code:**
+**Corrected Pseudo Code:**
 
 ```c
-char** strtow(char* str) {
+char **strtow(char *str) {
+  
+  char **words;
+  int i, j, word_cnt;
 
-  // Handle empty string
-  if (str == NULL || str[0] == '\0') {
-    return NULL; 
-  }
+  if (str == NULL || str[0] == '\0')
+    return NULL;
 
-  // Allocate memory for array of words
-  char** words = malloc(num_words * sizeof(char*));
+  // Count words
+  word_cnt = 0;
+  for (i = 0; str[i]; i++)
+    if (str[i] == ' ' && (str[i + 1] != ' ' && str[i + 1] != '\0'))
+      word_cnt++;
 
-  // Extract and allocate each word
-  int idx = 0;
-  int start = 0;
-  for (int i = 0; str[i]; i++) {
-    if (str[i] == ' ') {
-      int word_len = i - start;
-      words[idx] = malloc(word_len + 1);
-      strncpy(words[idx++], str + start, word_len);
-      words[idx][word_len] = '\0';
-      start = i + 1; 
+  // Allocate memory for words array
+  words = malloc((word_cnt + 1) * sizeof(char *));
+  if (words == NULL)
+    return NULL;
+
+  j = 0;
+  while (*str) {
+
+    // Extract word if found
+    if (*str != ' ') {
+      char *word = malloc(i + 1); 
+      int idx = 0;
+
+      while (*str != ' ' && *str != '\0') {
+        word[idx] = *str;
+        idx++;
+        str++;  
+      }
+      word[idx] = '\0';
+
+      // Add to array
+      words[j++] = word;
     }
-  }
-
-  // Null terminate array
-  words[idx] = NULL;
+    str++;
+  }  
+  words[j] = NULL;
 
   return words;
 }
