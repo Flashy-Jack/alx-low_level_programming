@@ -6,8 +6,6 @@
 
 ## Overview
 
-## Overview
-
 ![image](https://i.pinimg.com/736x/2a/55/1a/2a551a79059e2338775e8598e77dcaae--programming.jpg)
 
 This project covers the basics of compiling and running C programs using the gcc compiler.
