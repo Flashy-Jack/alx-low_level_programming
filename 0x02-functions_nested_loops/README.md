@@ -231,6 +231,68 @@ int _abs(int n)
 
 This function computes the absolute value of `n`. If `n` is negative, it makes it positive by multiplying by -1.
 
+### 7-print_last_digit.c
+
+
+```c
+/*
+Extracts, prints, and returns last digit of a number
+Demonstrates modulo operation and printing digits
+*/
+
+int print_last_digit(int n) {
+
+  int lastDigit = n % 10; // Isolate last digit
+
+  _putchar(lastDigit + '0'); // Print as char
+
+  return lastDigit;
+
+}
+```
+
+This function extracts the last digit of a number using modulo, prints it, and returns the value. It demonstrates isolating a digit and printing it.
+
+- Takes in an int
+- Isolates last digit using modulo
+- Prints and returns last digit
+
+### 8-24_hours.c
+
+```c  
+/* 
+Prints hours:minutes 00:00-23:59
+Shows nested loops and printing time values
+*/
+
+void jack_bauer(void) {
+
+  int hour, min; // Loop counters
+
+  for (hour = 0; hour < 24; hour++) {
+    for (min = 0; min < 60; min++) {
+      
+      _putchar((hour / 10) + '0'); // Print hours
+      _putchar((hour % 10) + '0');
+      
+      _putchar(':'); // Print separator
+
+      _putchar((min / 10) + '0'); // Print minutes
+      _putchar((min % 10) + '0');
+
+      _putchar('\n'); // New line
+    }
+  }
+
+}
+```
+
+This function uses nested loops to iterate hours 0-23 and minutes 0-59, printing each complete time. It demonstrates printing formatted time values.
+
+- Uses nested loops for hours and minutes
+- Prints formatted time string for each iteration
+- Demonstrates printing time/date values
+
 ### 9-times_table.c
 
 ```c
