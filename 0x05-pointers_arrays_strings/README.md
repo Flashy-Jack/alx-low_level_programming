@@ -300,7 +300,9 @@ char *_strcpy(char *dest, char *src)
 - Adds null terminator to end of dest 
 - Returns pointer to dest string
 
-### 10-atoi.c
+You're right, I made a mistake in including print_number.c when it is not part of the project tasks. Here is an updated explanation without 11-print_number.c and with 10-atoi.c corrected to 100-atoi.c:
+
+### 100-atoi.c
 
 ```c
 #include "main.h"
@@ -309,24 +311,24 @@ char *_strcpy(char *dest, char *src)
  * _atoi - Converts string to integer
  * @s: String to convert
  *
- * Return: Converted integer  
-*/
-int _atoi(char *s) 
+ * Return: Converted integer
+*/  
+int _atoi(char *s)
 {
-     int sign = 1; // Track sign of number
+     int sign = 1; // Track sign 
      int num = 0; // Track digits
 
      for (int i = 0; s[i] != '\0'; i++) {
           if (s[i] == '-') { // Flip sign if -
-               sign *= -1; 
-          } else if (s[i] >= '0' && s[i] <= '9') { // Accumulate digits
+               sign *= -1;
+          } else if (s[i] >= '0' && s[i] <= '9') { // Accumulate digits  
                num = (num * 10) + (s[i] - '0');
-          } else if (num > 0) { // Break once non-digit
-               break;  
+          } else if (num > 0) { // Break at non-digit
+               break;
           }
      }
 
-     return sign * num; // Return sign * digit total
+     return sign * num; // Return sign * digits
 }
 ```
 
@@ -336,78 +338,43 @@ int _atoi(char *s)
 - Breaks once non-digit char encountered
 - Returns sign multiplied by num
 
-### 11-print_number.c
-
-```c
-#include "main.h"
-
-/**
- * print_number - Print an integer 
- * @n: Number to print
-*/
-void print_number(int n)
-{
-     unsigned int n_abs; // Hold absolute value
-
-     if (n < 0) { // Handle negative
-          n_abs = -n;  
-          _putchar('-');
-     } else {
-          n_abs = n;
-     }
-
-     if (n_abs / 10 != 0) { // Recursive case
-          print_number(n_abs / 10); 
-     }
-
-     _putchar((n_abs % 10) + '0'); // Print last digit
-}
-```
-
-- Handles negative numbers and prints -
-- Recursively prints each leftmost digit 
-- Mods by 10 to print each digit right to left
-- Base case prints last single digit
-
-Recursive printing of each digit character.
-
 ### 101-keygen.c
 
 ```c
 #include <stdio.h>
-#include <stdlib.h> 
+#include <stdlib.h>
 #include <time.h>
 
-/**
+/** 
  * main - Generates random valid passwords
- *
+ * 
  * Return: Always 0 (Success)
 */
-int main(void)
+int main(void)  
 {
-     int pass[100]; // Array of character digits
+     int pass[100]; // Array of digit chars
      int sum = 0; // Sum of digits
 
      srand(time(NULL)); // Seed random generator
-
+     
      for (int i = 0; i < 100; i++) {
           pass[i] = rand() % 78; // Random digit [0-77]
-          sum += pass[i] + '0'; // Accumulate digit sums
+          sum += pass[i] + '0'; // Accumulate sums
           putchar(pass[i] + '0'); // Print digit
-          if (sum + '0' >= 2772) { // Check if sum exceeded
-               break; // Done if exceeded 2772
+          if (sum + '0' >= 2772) { // Check sum criteria
+               break; // Done if exceeded 2772 
           }
      }
 
-     return 0; // Return success 
+     return 0; // Return success status
 }
 ```
 
-- Seeds random num generator with current time
-- Generates random digits [0-77] 
-- Sums digits and prints each digit 
-- Stops when sum exceeds 2772
-- Returns 0 success status after generating valid password
+- Seeds random number generator with current time
+- Generates random digit chars [0-77]
+- Sums digits and prints each digit
+- Stops when sum of digits exceeds 2772
+- Returns 0 success status after generating valid password  
 
 This uses rand() to generate random digit chars [0-9a-zA-Z] that meet the crackme sum criteria.
 
