@@ -21,13 +21,13 @@ Some examples of problems that can be solved recursively:
 
 The key is to ensure there is a **base case** that does not make a recursive call, to end the recursion. Otherwise it will keep calling itself forever, causing a stack overflow.
 
-![Recursion Diagram](https://www.researchgate.net/profile/Wei-Chiang-Hong/publication/220942631/figure/fig3/AS:305851638976515@1449899174801/An-example-of-the-recursive-function-calls-of-the-factorial-function.png)
-
 ## Resources
 
-- [Recursion in C](https://www.programiz.com/c-programming/recursion) - Tutorial on recursion concepts and examples in C.
-- [C Programming Recursion](https://www.tutorialspoint.com/cprogramming/c_recursion.htm) - Recursion tutorial with C code examples.
-- [Recursion in Wikipedia](https://en.wikipedia.org/wiki/Recursion_(computer_science)) - General overview of recursion concepts.
+- [0x08. Recursion, introduction](https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/misc/2021/1/2818ba6f14f644b871dcbd746925fa15b8cd5937.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20230820%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230820T194220Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=3069144bce47d7342c903567257f3603a6798dcd7d6f2ce7b6823af5f79f1c1a)
+- [What on Earth is Recursion?](https://www.youtube.com/watch?v=Mv9NEXX1VHc)
+- [C - Recursion](https://intranet.alxswe.com/rltoken/u4ojc5CZpf4qiuQvmXCiOA)
+- [C Programming Tutorial 85, Recursion pt.1](https://www.youtube.com/watch?v=XGxbXMP6k8k)
+- [C Programming Tutorial 86, Recursion pt.2](https://www.youtube.com/watch?v=7XiIS6HobNs)
 
 ## man or help 
 
