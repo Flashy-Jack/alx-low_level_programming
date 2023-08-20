@@ -2,84 +2,548 @@
 
 ## Project By: Jordan Crossley
 
-## Course: ALX SOFTWARE ENGINEERING
+## Course: ALX SOFTWARE ENGINEERING 
 
-![image](https://developers.redhat.com/sites/default/files/styles/article_feature/public/blog/2021/04/2021_GNU_GDB-Developer_tutorial_Featured_Article__A.png?itok=1jjAdaFT)
-
-## Technologies
-		
-* C files are compiled using `gcc 4.8.4`
-		
-* C files are written according to the C90 standard
-		
-* Tested on Ubuntu 14.04 LTS
-				
-## Files
-		
-All of the following files are programs written in C:
+## Overview
 
 ![image](https://user-images.githubusercontent.com/105258746/189934273-f596e713-d5a1-4ab2-b623-75094e5c9b0e.png)
-#### Nested loop means a loop statement inside another loop statement. That is why nested loops are also called as “loop inside loop"
-`(A nested loop is a loop inside the body of another loop)`
 
-- Note: The prototypes of all your functions and the prototype of the function _putchar should be included in your header file called main.h
-~ You have to start by creating your `main.h` first. (The resources is below for your reference)
+Here is an updated overview section summarizing the key concepts:
 
-## ** File `main.h` is the header file containing all the function prototypes used in this project... >>>> THIS FILE IS VERY IMPORTANT
+## Overview
 
-#### ==> File: `0-putchar.c` is a program that prints `-putchar`, followed by a new line.
+This project focuses on writing reusable functions, looping through iterations, printing output, and evaluating conditions in C programming. The main concepts covered are:
 
-#### ==> File: `1-alphabet.c` is a function that prints the alphabet, in lowercase, followed by a new line.
+- Modular programming with functions 
+- Iteration with for and while loops
+- Printing formatted text output
+- Controlling program flow based on logic
 
-#### ==> File: `2-print_alphabet_x10.c` is a function that prints 10 times the alphabet, in lowercase, followed by a new line.
+Writing modular functions allows code to be reused. Loops perform repeated execution. Printing output allows results to be displayed. Evaluating conditions with logic controls code flow.
 
-#### ==> File: `3-islower.c` is a function that checks for lowercase character.
+Mastering these core programming concepts of functions, loops, print, and logic in C is essential for being able to properly structure code, automate repetitive tasks, display results, and make decisions programmatically.
 
-#### ==> File: `4-isalpha.c` is a function that checks for alphabetic character.
+**Key concepts**:
 
-#### ==> File `5-sign.c` is a function that prints the sign of a number.
+- Writing functions with arguments and return values
+- Understanding scope and lifetime of variables  
+- Utilizing for and while loops and nesting loops
+- Printing characters and strings with putchar
+- Formatting output using techniques like padding
+- Evaluating logic with if/else statements and comparisons
+- Calling functions from within other functions
+- Defining function prototypes
+- Performing mathematical and string operations
 
-#### ==> File `6-abs.c` is a function that computes the absolute value of an integer.
+Mastering these foundational concepts will enable creating robust programs in C.
 
-#### ==> File `7-print_last_digit.c` is a function that prints the last digit of a number.
+## Resources
 
-#### ==> File `8-24_hours.c` is a function that prints every minute of the day of Jack Bauer, starting from 00:00 to 23:59.
+- [Nested while loops video](https://www.youtube.com/watch?v=Z3iGeQ1gIss) - Explains nested while loops in C with examples
 
-#### ==> File `10-add.c` is a function that adds two integers and returns the result.
+- [C functions reference](http://www.tutorialspoint.com/cprogramming/c_functions.htm) - Covers function syntax, return values, scope, passing arguments, prototypes
 
-#### ==> File `11-print_to_98.c` is a function that prints all natural numbers from n to 98, followed by a new line.
+- [Learning C video](https://www.youtube.com/watch?v=qMlnFwYdqIw) - Video tutorial on writing C functions
+
+- [Function prototype reference](https://www.geeksforgeeks.org/what-is-the-purpose-of-a-function-prototype/) - Explains purpose and syntax of prototypes
+
+- [C header files reference](https://www.tutorialspoint.com/cprogramming/c_header_files.htm) - Covers including and declaring headers
+
+## Task Code Explanations
+
+### 0-putchar.c
+
+```c
+#include "main.h" // Includes header file with _putchar prototype
+
+/**
+ * main - Entry point function
+ *
+ * Return: Always 0 (Success)
+*/
+
+int main(void) // Main function definition
+{
+  char str[] = "_putchar"; // Initialize string variable
+  int ch; // Counter variable
+  
+  for (ch = 0; ch < 8; ++ch) // Loop through string
+    _putchar(str[ch]); // Call _putchar to print each char
+  
+  _putchar('\n'); // Print new line
+
+  return (0); // Return 0 for success
+}
 ```
-File: `_putchar.c` contains the _putchar() function definition.
+
+This program prints the string `_putchar` by looping through each character and passing it to the `_putchar` function to print.
+
+### 1-alphabet.c
+
+```c  
+#include "main.h"
+
+/**
+ * print_alphabet - Print alphabet a-z
+*/
+
+void print_alphabet(void) // Function definition
+{
+  int ch; // Counter variable
+
+  for (ch = 'a'; ch <= 'z'; ++ch) // Loop 'a' to 'z'
+    _putchar(ch); // Print each character
+  
+  _putchar('\n'); // Print new line
+}
 ```
 
-## Advanced Task
+This function prints the lowercase alphabet a-z by looping from `a` to `z` and calling `_putchar` on each character.
 
-#### ===> File `100-times_table.c` is a function that prints the n times table, starting with 0.
+### 2-print_alphabet_x10.c
 
-#### ===> File `101-natural.c` is a program that computes and prints the sum of all the multiples of 3 or 5 below 1024 (excluded), followed by a new line.
+```c
+#include "main.h"
 
-#### ===> File `102-fibonacci.c` is a program that prints the first 50 Fibonacci numbers, starting with 1 and 2, followed by a new line.
+/**  
+ * print_alphabet_x10 - Prints alphabet 10 times 
+*/
 
-#### ===> File `103-fibonacci.c` is a program that finds and prints the sum of the even-valued terms of the Fibonacci suite under 4000000, followed by a new line.
+void print_alphabet_x10(void) // Function definition
+{
+  char ch; // Inner loop counter
+  int i; // Outer loop counter
 
-#### ===> File `104-fibonacci.c` is a program that finds and prints the first 98 Fibonacci numbers, starting with 1 and 2, followed by a new line.
+  i = 0; 
 
-# Resources
-#### Read or watch:
-- [Nested while loops](https://www.youtube.com/watch?v=Z3iGeQ1gIss)
-- [C - Functions](https://www.tutorialspoint.com/cprogramming/c_functions.htm)
-- [Learning to Program in C (Part 06) `stop at 14:00`](https://www.youtube.com/watch?v=qMlnFwYdqIw)
-- [What is the purpose of a function prototype?](https://www.geeksforgeeks.org/what-is-the-purpose-of-a-function-prototype/)
-- [C - Header Files `stop before the “Once-Only Headers” paragraph`](https://www.tutorialspoint.com/cprogramming/c_header_files.htm)
-### `File 9-print_comb.c` is a C program that prints all possible combinations of single-digit numbers.
+  while (i < 10) { // Outer loop iterates 10 times
+    
+    ch = 'a';
+    while (ch <= 'z') { // Inner loop prints a-z
+      _putchar(ch);
+      ch++; 
+    }
+    
+    _putchar('\n'); // New line after inner loop
+    i++; // Increment outer counter
+  }
 
-### `File 10-print_comb2.c` is a C program that prints the numbers from 00 to 99.
+}
+```
 
-### `File 100-print_comb3.c` is a program that prints all possible different combinations of two digits.
+This function utilizes nested `while` loops to print the alphabet 10 times. The outer loop controls the number of iterations, while the inner loop prints `a-z`.
 
-### `File 101-print_comb4.c` is a program that prints all possible different combinations of three digits.
+### 3-islower.c
 
-### `File 102-print_comb5.c` is a program that prints all possible combinations of two two-digit numbers.
+```c
+#include "main.h"  
 
-		
+/**
+ * _islower - Check if c is lowercase
+ * @c: Character to check
+ *
+ * Return: 1 if lowercase, 0 if not
+*/
 
+int _islower(int c) // Function definition
+{
+  if (c >= 'a' && c <= 'z') // Compare to a-z range
+    return (1); 
+  
+  return (0); // Default return 0
+}
+```
+
+This function checks if a character is lowercase by comparing `c` to the lowercase alphabet range `a-z`. It returns `1` if true, `0` if false.
+
+### 4-isalpha.c
+
+```c
+#include "main.h"
+
+/**
+ * _isalpha - Check if alphabetic character
+ * @c: Character to check
+ *
+ * Return: 1 if alphabetic, 0 if not 
+*/
+
+int _isalpha(int c)
+{
+  // Check both lowercase and uppercase ranges
+  return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')); 
+}
+```
+
+This function checks if `c` is alphabetical by comparing it to both the lowercase `a-z` and uppercase `A-Z` ranges. It returns `1` if true, `0` if false.
+
+### 5-sign.c
+
+```c
+#include "main.h"
+
+/**
+ * print_sign - Prints sign of number
+ * @n: Number to check
+ *
+ * Return: 1 for positive, 0 for zero, -1 for negative
+*/
+
+int print_sign(int n) 
+{
+  if (n > 0) {
+    _putchar('+');
+    return (1);
+  }
+  else if (n == 0) {
+    _putchar('0');
+    return (0);
+  }
+  else {
+    _putchar('-');
+    return (-1);
+  }
+}
+```
+
+This prints the sign of `n` as `+` if positive, `0` if zero, `-` if negative. It returns `1`, `0`, or `-1` based on the sign.
+
+### 6-abs.c
+
+```c
+#include "main.h"
+
+/**
+ * _abs - Computes absolute value of integer
+ * @n: Number to take absolute value of
+ *
+ * Return: Absolute value of n
+*/
+
+int _abs(int n)
+{
+  if (n < 0) // If n is negative
+    n = (-1) * n; // Make positive
+  
+  return (n);
+} 
+```
+
+This function computes the absolute value of `n`. If `n` is negative, it makes it positive by multiplying by -1.
+
+### 9-times_table.c
+
+```c
+#include "main.h"
+
+/**
+ * times_table - Prints 9 times table 0-9
+*/
+
+void times_table(void)
+{
+  int num, mult, prod;
+
+  for (num = 0; num <= 9; ++num) {
+    _putchar('0');
+    
+    for (mult = 1; mult <= 9; ++mult) {
+      _putchar(',');
+      _putchar(' ');
+
+      prod = num * mult;
+
+      if (prod <= 9) 
+        _putchar(' ');
+      
+      else
+        _putchar((prod / 10) + '0');
+
+      _putchar((prod % 10) + '0');
+    }
+    _putchar('\n');
+  }
+}
+```
+
+This prints the 9 times table by nesting two `for` loops. The outer loop iterates each number 0-9. The inner loops prints the multiple for each 1-9 and formats it.
+
+Here are detailed explanations for 10-add.c and 11-print_to_98.c:
+
+### 10-add.c
+
+```c
+int add(int a, int b) {
+
+  int sum;
+  
+  // Declares variable to store sum
+
+  sum = a + b; 
+  
+  // Adds input parameters a and b
+
+  return (sum);
+
+  // Returns the sum
+
+}
+```
+
+This function takes two `int` inputs, stores their sum in `sum`, and returns it.
+
+- `a` and `b` are the input parameters
+- `sum` holds the result of `a + b` 
+- The sum is calculated then returned
+
+It allows summing two numbers by calling the function and passing arguments.
+
+### 11-print_to_98.c
+
+```c
+void print_to_98(int n) {
+
+  if (n <= 98) {
+
+    // If n is less than or equal to 98
+
+    for (int i = n; i <= 98; i++) {
+    
+      // Loop from n to 98
+
+      printf("%d", i); 
+
+      // Print current number
+
+      if (i != 98) {
+      
+        // Add comma except last number
+      
+        printf(", "); 
+
+      }
+
+    }
+
+  } else {
+
+    // If n is greater than 98
+
+    for (int i = n; i >= 98; i--) {
+    
+      // Loop down from n to 98
+
+      printf("%d", i);
+
+      if(i != 98) {
+      
+        printf(", ");
+      
+      }
+
+    }
+
+  }
+
+  printf("\n");
+
+}
+```
+
+This function prints all numbers between `n` and 98:
+
+- Checks if `n` is less than or greater than 98
+- Uses appropriate loop to increment or decrement
+- Prints each number, adding comma separator
+- Prints new line after loop finishes
+
+It handles both ascending and descending sequences from `n`.
+
+### 100-times_table.c
+
+```c  
+#include "main.h"
+
+/**
+ * print_times_table - Prints input time table
+ * @n: Number input
+*/
+
+void print_times_table(int n)
+{
+  // Nested loops print rows and columns  
+  for (int row = 0; row <= n; row++) {
+    for (int col = 0; col <= n; col++) {
+      int prod = row * col;
+      
+      if (col != 0) 
+        _putchar(',');
+
+      if (prod < 10) 
+        _putchar(' ');
+      else 
+        _putchar((prod / 10) + '0');
+
+      _putchar((prod % 10) + '0');
+    }
+    _putchar('\n');
+  }
+}
+```
+
+This function prints the input `n` times table by nesting two `for` loops to iterate the rows and columns. It formats each number to handle 1 or 2 digits.
+
+### 101-natural.c
+
+```c
+int main(void) {
+
+  int sum = 0;
+
+  for (int i = 0; i < 1024; i++) {
+
+    // Loops 0 to 1023
+
+    if (i % 3 == 0 || i % 5 == 0) {
+    
+      // Checks if divisible by 3 or 5
+
+      sum += i; // Adds to sum if true
+
+    }
+
+  }
+
+  printf("%d\n", sum); // Prints total sum
+  
+}
+``` 
+
+Sums multiples of 3 and 5 below 1024.
+
+### 102-fibonacci.c
+
+```c
+int main(void) {
+  
+  int n1 = 0, n2 = 1, next;
+
+  for (int i = 0; i < 50; i++) {
+
+    // Loop 50 times
+
+    if (i > 1) {
+    
+      // Skips printing first 2
+     
+      printf(", ");
+
+    }
+
+    printf("%d", n1); // Prints current
+
+    next = n1 + n2; // Calculates next term
+
+    n1 = n2; // Shifts sequence down
+    n2 = next;
+
+  }
+
+}
+```
+
+Prints first 50 Fibonacci sequence terms.
+### 103-fibonacci.c
+
+Here is a detailed explanation of the 103-fibonacci.c code:
+
+```c
+int main(void) {
+
+  int i;
+  
+  // Declares loop counter variable i
+
+  unsigned long int j = 1;
+  unsigned long int k = 2;
+  
+  // Initializes first two Fibonacci numbers
+
+  unsigned long int sum = 0;
+  
+  // Sum variable to keep track of total
+
+  unsigned long int next;
+
+  // Temporary variable to store next number
+
+  for (i = 1; i <= 33; i++) {
+
+    // Loop 33 times 
+
+    if (j < 4000000 && j % 2 == 0) {
+    
+      // Check if j is even and < 4 million
+      
+      sum += j; // Add to sum if true
+  
+    }
+
+    next = j + k; // Calculate next Fibonacci number
+
+    j = k; // Shift j to next number
+    k = next; // Shift k to next number
+
+  }
+
+  printf("%lu\n", sum); // Print final sum 
+
+}
+```
+
+Key points:
+
+- Uses unsigned long ints to allow large numbers
+- Initializes starting Fibonacci numbers 
+- Calculates next number each iteration 
+- Sums even numbers below 4 million
+- Prints total sum after loop ends
+
+This calculates even Fibonacci numbers and sums those below 4 million.
+
+### 104-fibonacci.c
+
+```c
+#include <stdio.h>
+
+/**
+ * main - Print first 98 Fib nums
+ *
+ * Return: Always 0
+*/
+
+int main(void)
+{
+  // Initialize variables
+  unsigned long int i; 
+  unsigned long int bef1 = 1;
+  unsigned long int bef2 = 2;
+
+  // Print first two pre-defined numbers
+  printf("%lu", bef1);
+  printf(", %lu", bef2);
+
+  // Loop and print 96 more
+  for (i = 2; i < 98; i++) {
+    unsigned long int cur = bef1 + bef2;
+    printf(", %lu", cur);
+    bef1 = bef2;
+    bef2 = cur;
+  }
+  
+  printf("\n");
+  return (0);
+}
+```
+
+This prints the first 98 Fibonacci sequence numbers. It initializes the first two numbers then uses a loop to print each subsequent number by adding the previous two.
