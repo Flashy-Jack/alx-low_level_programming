@@ -4,8 +4,6 @@
 
 ## Course: ALX SOFTWARE ENGINEERING 
 
-# C Pointers, Arrays and Strings Project
-
 ## Overview
 
 ![image](https://user-images.githubusercontent.com/105258746/190977571-d5135d31-02a5-4ff3-88de-d9062d6cfe13.png)
