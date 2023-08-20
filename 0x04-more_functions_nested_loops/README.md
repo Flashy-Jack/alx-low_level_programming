@@ -6,7 +6,7 @@
 
 ## Overview
 
-![image](https://media.geeksforgeeks.org/wp-content/uploads/20220801153940/Nestedloop.png)
+![image](https://runestone.academy/ns/books/published/csawesome/_images/nestedloops.png)
 
 This project covers writing custom functions and using nested loops in C programming. Functions allow code to be reused easily, while loops provide a way to repeat operations efficiently. 
 
